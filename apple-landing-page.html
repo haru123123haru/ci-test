@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirSound Pro - Premium Wireless Earbuds</title>
+    <style>
+        /* ========================================
+           APPLE DESIGN SYSTEM - FOUNDATION
+           ======================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Apple Color Palette */
+            --color-bg-primary: #ffffff;
+            --color-bg-secondary: #f5f5f7;
+            --color-bg-dark: #000000;
+            --color-text-primary: #1d1d1f;
+            --color-text-secondary: #6e6e73;
+            --color-accent: #0071e3;
+            --color-accent-hover: #0077ed;
+
+            /* Typography Scale */
+            --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+            /* Spacing System (8px base) */
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+            --spacing-2xl: 64px;
+            --spacing-3xl: 96px;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+
+            /* Transitions */
+            --transition-fast: 200ms ease;
+            --transition-smooth: 300ms ease;
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        body {
+            font-family: var(--font-system);
+            color: var(--color-text-primary);
+            background-color: var(--color-bg-primary);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ========================================
+           NAVIGATION BAR
+           ======================================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            transition: var(--transition-smooth);
+        }
+
+        .navbar-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 44px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: opacity var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        .buy-button {
+            background: var(--color-accent);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color var(--transition-fast);
+        }
+
+        .buy-button:hover {
+            background: var(--color-accent-hover);
+        }
+
+        /* ========================================
+           HERO SECTION
+           ======================================== */
+
+        .hero {
+            background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+            padding: var(--spacing-3xl) var(--spacing-md);
+            text-align: center;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 980px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            font-size: 17px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: 0.5px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-title {
+            font-size: 80px;
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, #1d1d1f 0%, #4a4a4a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 28px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: var(--spacing-xl);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            margin-bottom: var(--spacing-2xl);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .cta-primary,
+        .cta-secondary {
+            padding: 12px 24px;
+            font-size: 17px;
+            font-weight: 500;
+            border-radius: 980px;
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+            display: inline-block;
+        }
+
+        .cta-primary {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cta-primary:hover {
+            background: var(--color-accent-hover);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+        }
+
+        .cta-secondary:hover {
+            background: var(--color-accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-product-visual {
+            position: relative;
+            margin-top: var(--spacing-xl);
+            opacity: 0;
+            animation: fadeInScale 1s ease 0.8s forwards;
+        }
+
+        .product-image-container {
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 113, 227, 0.15) 0%, rgba(0, 113, 227, 0) 70%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .product-visual {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .earbud {
+            width: 120px;
+            height: 180px;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            border-radius: 60px 60px 30px 30px;
+            position: absolute;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .earbud-left {
+            left: 80px;
+            transform: rotate(-15deg);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .earbud-right {
+            right: 80px;
+            transform: rotate(15deg);
+            animation: float 3s ease-in-out 1.5s infinite;
+        }
+
+        .earbud::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #1d1d1f;
+            border-radius: 50%;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* ========================================
+           FEATURES SECTION
+           ======================================== */
+
+        .features {
+            background: var(--color-bg-primary);
+            padding: var(--spacing-3xl) var(--spacing-md);
+        }
+
+        .features-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-2xl) auto;
+        }
+
+        .features-title {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .features-subtitle {
+            font-size: 21px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .feature-card {
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 113, 227, 0.05) 0%, rgba(0, 113, 227, 0) 100%);
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #0077ed 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+            font-size: 32px;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.5px;
+        }
+
+        .feature-description {
+            font-size: 17px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           PRODUCT SHOWCASE
+           ======================================== */
+
+        .showcase {
+            background: var(--color-bg-dark);
+            color: white;
+            padding: var(--spacing-3xl) var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 113, 227, 0.2) 0%, rgba(0, 113, 227, 0) 70%);
+            top: -400px;
+            right: -400px;
+            border-radius: 50%;
+        }
+
+        .showcase-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .showcase-text h2 {
+            font-size: 48px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .showcase-text p {
+            font-size: 21px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .showcase-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .showcase-visual {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .showcase-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .showcase-image::after {
+            content: 'AirSound Pro';
+            font-size: 32px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+        }
+
+        /* ========================================
+           FINAL CTA SECTION
+           ======================================== */
+
+        .final-cta {
+            background: var(--color-bg-secondary);
+            padding: var(--spacing-3xl) var(--spacing-md);
+            text-align: center;
+        }
+
+        .final-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .final-cta p {
+            font-size: 21px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .price {
+            font-size: 17px;
+            color: var(--color-text-secondary);
+            margin-top: var(--spacing-md);
+        }
+
+        .price-amount {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            display: block;
+            margin-top: var(--spacing-xs);
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+
+        .footer {
+            background: var(--color-bg-secondary);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        .footer-content {
+            max-width: 980px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            list-style: none;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: opacity var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* ========================================
+           ANIMATIONS
+           ======================================== */
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(-15deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(-15deg);
+            }
+        }
+
+        .earbud-right {
+            animation: float-right 3s ease-in-out 1.5s infinite;
+        }
+
+        @keyframes float-right {
+            0%, 100% {
+                transform: translateY(0) rotate(15deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(15deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
+
+        @media (max-width: 1024px) {
+            .showcase-content {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+
+            .showcase-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 48px;
+                letter-spacing: -1px;
+            }
+
+            .hero-subtitle {
+                font-size: 21px;
+            }
+
+            .product-image-container {
+                width: 400px;
+                height: 400px;
+            }
+
+            .product-visual {
+                width: 300px;
+                height: 300px;
+            }
+
+            .earbud-left {
+                left: 50px;
+            }
+
+            .earbud-right {
+                right: 50px;
+            }
+
+            .features-title,
+            .final-cta h2 {
+                font-size: 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .showcase-text h2 {
+                font-size: 36px;
+            }
+
+            .showcase-stats {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-primary,
+            .cta-secondary {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .product-image-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .product-visual {
+                width: 240px;
+                height: 240px;
+            }
+
+            .earbud {
+                width: 80px;
+                height: 120px;
+            }
+
+            .earbud-left {
+                left: 30px;
+            }
+
+            .earbud-right {
+                right: 30px;
+            }
+
+            .earbud::before {
+                width: 30px;
+                height: 30px;
+                top: 20px;
+            }
+
+            .features-title,
+            .final-cta h2 {
+                font-size: 32px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection styling */
+        ::selection {
+            background-color: var(--color-accent);
+            color: white;
+        }
+
+        ::-moz-selection {
+            background-color: var(--color-accent);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#" class="logo">AirSound</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#specs">Specs</a></li>
+                <li><a href="#buy">Buy</a></li>
+            </ul>
+            <a href="#buy" class="buy-button">Buy</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">New</p>
+            <h1 class="hero-title">AirSound Pro</h1>
+            <p class="hero-subtitle">Immersive sound. Effortless connection. All-day comfort.</p>
+
+            <div class="hero-cta">
+                <a href="#buy" class="cta-primary">Buy now</a>
+                <a href="#features" class="cta-secondary">Learn more</a>
+            </div>
+
+            <div class="hero-product-visual">
+                <div class="product-image-container">
+                    <div class="product-glow"></div>
+                    <div class="product-visual">
+                        <div class="earbud earbud-left"></div>
+                        <div class="earbud earbud-right"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-header">
+            <h2 class="features-title">Designed for the way you listen.</h2>
+            <p class="features-subtitle">Every detail engineered to perfection. Every moment elevated by exceptional sound.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎵</div>
+                <h3 class="feature-title">Spatial Audio</h3>
+                <p class="feature-description">Dynamic head tracking creates an immersive three-dimensional listening experience that puts you inside the music.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔇</div>
+                <h3 class="feature-title">Active Noise Cancellation</h3>
+                <p class="feature-description">Advanced algorithms continuously adapt to your environment, blocking out distractions for pure, uninterrupted sound.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔋</div>
+                <h3 class="feature-title">30-Hour Battery</h3>
+                <p class="feature-description">All-day listening with an intelligent charging case. Fast charge gives you 3 hours of playback in just 10 minutes.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💧</div>
+                <h3 class="feature-title">Water Resistant</h3>
+                <p class="feature-description">IPX7 rating means worry-free workouts and protection from rain. Designed to handle whatever your day brings.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Instant Pairing</h3>
+                <p class="feature-description">Open the case and connect instantly to all your devices. Seamlessly switch between phone, tablet, and computer.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎤</div>
+                <h3 class="feature-title">Crystal Clear Calls</h3>
+                <p class="feature-description">Beamforming microphones and voice isolation ensure you're heard perfectly, even in noisy environments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="showcase" id="specs">
+        <div class="showcase-content">
+            <div class="showcase-text">
+                <h2>Performance that moves you.</h2>
+                <p>Premium drivers deliver rich bass, precise mids, and crystal-clear highs. Experience every note exactly as the artist intended.</p>
+
+                <div class="showcase-stats">
+                    <div class="stat">
+                        <span class="stat-value">30h</span>
+                        <span class="stat-label">Battery Life</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">10mm</span>
+                        <span class="stat-label">Drivers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">IPX7</span>
+                        <span class="stat-label">Water Resist</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="showcase-visual">
+                <div class="showcase-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="buy">
+        <div class="final-cta-content">
+            <h2>Ready to experience the difference?</h2>
+            <p>Join thousands of listeners who've upgraded to AirSound Pro. Premium sound shouldn't be a luxury.</p>
+
+            <div class="hero-cta">
+                <a href="#" class="cta-primary">Buy AirSound Pro</a>
+                <a href="#" class="cta-secondary">Visit a store</a>
+            </div>
+
+            <div class="price">
+                <span class="price-amount">$249</span>
+                Free shipping and returns
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <p>Copyright © 2025 AirSound. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
